@@ -2,13 +2,65 @@
 
 <h1>Friends List</h1>
 
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this friend", friend %>
-    </p>
-  <% end %>
-</div>
+<!--<div id="friends">-->
+  <%# @friends.each do |friend| %>
+    <%#= render friend %>
+<!--    <p>-->
+      <%#= link_to "Show this friend", friend %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>-->
 
-<%= link_to "New friend", new_friend_path %>
+<table class="table table-striped">
+  <thead class="table-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Phone</th>
+    <th scope="col">Twitter</th>
+    <th scope="col">Instagram</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @friends.each do |friend| %>
+    <%#= render friend %>
+    <tr>
+      <th scope="row">
+        <%= friend.id %>
+      </th>
+      <td>
+        <%= friend.first_name %>
+      </td>
+      <td>
+        <%= friend.last_name %>
+      </td>
+      <td>
+        <%= friend.email %>
+      </td>
+      <td>
+        <%= friend.phone %>
+      </td>
+      <td>
+        <%= friend.twitter %>
+      </td>
+      <td>
+        <%= friend.instagram %>
+      </td>
+      <td>
+        <%= link_to "Show this friend", friend %>
+      </td>
+      <td>
+        <%= link_to "Edit this friend", edit_friend_path(friend) %>
+      </td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+
+<button type="button" class="btn btn-secondary"><%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %></button>
